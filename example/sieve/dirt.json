@@ -1,0 +1,25 @@
+{
+    "pools": [
+        {
+            "rolls": 3,
+            "chance": 0.3,
+            "entries": [
+                {
+                    "type": "item",
+                    "id": "rock",
+                    "weight": 15
+                },
+                {
+                    "type": "item",
+                    "id": "wheatSeeds",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "id": "bone",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
