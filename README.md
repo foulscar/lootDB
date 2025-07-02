@@ -1,1 +1,1 @@
-# loottables
+# lootDB
