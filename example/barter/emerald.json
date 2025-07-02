@@ -1,0 +1,17 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "chance": 0.1,
+            "entries": [
+                {
+                    "type": "item",
+                    "id": "bundleSediment",
+                    "weight": 1,
+                    "CountMin": 1,
+                    "CountMax": 1
+                }
+            ]
+        }
+    ]
+}

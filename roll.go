@@ -20,9 +20,6 @@ func (t *Table) Roll() map[ItemID]int {
 				if entryChosen > helperNum {
 					continue
 				}
-				if entry.Type != "item" {
-					break
-				}
 
 				rangeDif := entry.CountMax - entry.CountMin
 				if rangeDif < 1 {

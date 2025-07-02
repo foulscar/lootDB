@@ -1,26 +1,26 @@
 {
     "pools": [
         {
-            "rolls": 3,
-            "chance": 1.0,
+            "rolls": 5,
+            "chance": 0.5,
             "entries": [
                 {
                     "type": "item",
-                    "id": "rock",
+                    "id": "quartz",
                     "weight": 15,
                     "countMin": 1,
-                    "countMax": 2
+                    "countMax": 1
                 },
                 {
                     "type": "item",
-                    "id": "wheatSeeds",
+                    "id": "nautilusShell",
                     "weight": 4,
                     "countMin": 1,
-                    "countMax": 2
+                    "countMax": 1
                 },
                 {
                     "type": "item",
-                    "id": "bone",
+                    "id": "goldNugget",
                     "weight": 1,
                     "countMin": 1,
                     "countMax": 1

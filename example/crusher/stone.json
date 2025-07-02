@@ -7,23 +7,23 @@
                 {
                     "type": "item",
                     "id": "rock",
-                    "weight": 15,
-                    "countMin": 1,
-                    "countMax": 2
+                    "weight": 40,
+                    "countMin": 2,
+                    "countMax": 3
                 },
                 {
                     "type": "item",
-                    "id": "wheatSeeds",
-                    "weight": 4,
-                    "countMin": 1,
-                    "countMax": 2
+                    "id": "ironRaw",
+                    "weight": 7,
+                    "countMin": 0,
+                    "countMax": 3
                 },
                 {
                     "type": "item",
-                    "id": "bone",
-                    "weight": 1,
-                    "countMin": 1,
-                    "countMax": 1
+                    "id": "goldRaw",
+                    "weight": 3,
+                    "countMin": 0,
+                    "countMax": 3
                 }
             ]
         }

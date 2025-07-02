@@ -8,7 +8,7 @@ import (
 
 type TableCat string
 
-type TableDB map[TableCat]map[ItemID]Table
+type TableDB map[TableCat]map[ItemID]*Table
 
 type Table struct {
 	Index string
@@ -22,17 +22,11 @@ type Pool struct {
 }
 
 type PoolEntry struct {
-	Type       string  `json:"type"`
 	ID         string  `json:"id"`
 	Weight     int     `json:"weight"`
 	CountMin   int     `json:"countMin"`
 	CountMax   int     `json:"countMax"`
 	CalcChance float64 `json:"calcChance,omitempty"`
-}
-
-var ValidPoolEntryTypes = []string{
-	"item",
-	"loottable",
 }
 
 func (p *Pool) CalculateEntryChances() {
@@ -113,17 +107,6 @@ func (p Pool) IsValid() (bool, error) {
 }
 
 func (e PoolEntry) IsValid() (bool, error) {
-	typeIsValid := false
-	for _, validType := range ValidPoolEntryTypes {
-		if e.Type == validType {
-			typeIsValid = true
-			break
-		}
-	}
-	if !typeIsValid {
-		return false, errors.New("does not contain a valid 'type' field")
-	}
-
 	if e.ID == "" {
 		return false, errors.New("does not contain an 'id' field or is empty")
 	}

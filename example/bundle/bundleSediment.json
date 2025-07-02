@@ -1,0 +1,38 @@
+{
+    "pools": [
+        {
+            "rolls": 5,
+            "chance": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "id": "dirt",
+                    "weight": 50,
+                    "CountMin": 1,
+                    "CountMax": 3
+                },
+                {
+                    "type": "item",
+                    "id": "sand",
+                    "weight": 30,
+                    "CountMin": 1,
+                    "CountMax": 3
+                },
+                {
+                    "type": "item",
+                    "id": "gravel",
+                    "weight": 25,
+                    "CountMin": 1,
+                    "CountMax": 3
+                },
+                {
+                    "type": "item",
+                    "id": "rock",
+                    "weight": 5,
+                    "CountMin": 1,
+                    "CountMax": 3
+                }
+            ]
+        }
+    ]
+}

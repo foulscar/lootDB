@@ -1,0 +1,17 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "chance": 1.0,
+            "entries": [
+                {
+                    "type": "item",
+                    "id": "boneMeal",
+                    "weight": 1,
+                    "countMin": 1,
+                    "countMax": 5
+                }
+            ]
+        }
+    ]
+}

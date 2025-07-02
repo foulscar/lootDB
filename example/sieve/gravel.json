@@ -2,28 +2,21 @@
     "pools": [
         {
             "rolls": 3,
-            "chance": 1.0,
+            "chance": 1,
             "entries": [
                 {
                     "type": "item",
                     "id": "rock",
                     "weight": 15,
                     "countMin": 1,
-                    "countMax": 2
+                    "countMax": 4
                 },
                 {
                     "type": "item",
-                    "id": "wheatSeeds",
-                    "weight": 4,
+                    "id": "flint",
+                    "weight": 5,
                     "countMin": 1,
                     "countMax": 2
-                },
-                {
-                    "type": "item",
-                    "id": "bone",
-                    "weight": 1,
-                    "countMin": 1,
-                    "countMax": 1
                 }
             ]
         }

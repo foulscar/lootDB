@@ -1,5 +1,41 @@
-itemID,itemName
-dirt,Dirt
-rock,Rock
-bone,Bone
-wheatSeeds,Wheat Seeds
+itemID,itemName,comment
+
+,,---CURRENCY---
+emerald,Emerald,
+
+,,---SEDIMENT---
+dirt,Dirt,
+sand,Sand,
+gravel,Gravel,
+
+,,---ROCK_BLOCKS---
+stone,Stone,
+granite,Granite,
+andesite,Andesite,
+sandstone,Sandstone,
+
+,,---MINERALS---
+goldRaw,Raw Gold Ore,
+goldNugget,Gold Nugget,
+goldIngot,Gold Ingot,
+goldComp,Compressed Gold,
+
+ironRaw,Raw Iron Ore,
+ironNugget,Iron Nugget,
+ironIngot,Iron Ingot,
+ironComp,Compressed Iron,
+
+quartz,Quartz,
+quartzComp,Compressed Quartz,
+
+,,---MISC---
+nautilusShell,Nautilus Shell,
+flint,Flint,
+rock,Rock,
+bone,Bone,
+boneMeal,Bone Meal,
+wheatSeeds,Wheat Seeds,
+
+,,---BUNDLES---
+bundleSediment,Sediment Bundle,
+bundleEarth,Earth Bundle,

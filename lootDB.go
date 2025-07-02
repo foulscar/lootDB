@@ -54,7 +54,7 @@ func NewLootDBFromDir(dirPath string) (*LootDB, error) {
 
 	for _, entry := range tableCatDirs {
 		tableCat := TableCat(entry.Name())
-		lootDB.TableDB[tableCat] = make(map[ItemID]Table)
+		lootDB.TableDB[tableCat] = make(map[ItemID]*Table)
 
 		subEntries, err := os.ReadDir(dirPath + "/" + string(tableCat))
 		if err != nil {
@@ -87,11 +87,12 @@ func NewLootDBFromDir(dirPath string) (*LootDB, error) {
 				return nil, err
 			}
 
-			lootDB.TableDB[tableCat][itemID] = table
+			lootDB.TableDB[tableCat][itemID] = &table
 		}
 	}
 
 	lootDB.LinkItemDBWithTables()
+	lootDB.CalculateItemsWorth(ItemID("emerald"))
 
 	return &lootDB, nil
 }
@@ -116,9 +117,6 @@ func (db *LootDB) IsValid() (bool, error) {
 					return false, err
 				}
 				for _, entry := range pool.Entries {
-					if entry.Type != "item" {
-						continue
-					}
 					if _, ok := db.ItemDB[ItemID(entry.ID)]; !ok {
 						return false, undefinedErr
 					}

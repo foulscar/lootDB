@@ -11,9 +11,10 @@ type ItemID string
 type ItemDB map[ItemID]*ItemDBEntry
 
 type ItemDBEntry struct {
-	Name    string
-	FoundIn map[TableCat][]ItemID
-	UsedFor []TableCat
+	Name      string
+	CalcWorth float64
+	FoundIn   map[TableCat][]ItemID
+	UsedFor   []TableCat
 }
 
 func UnmarshalItemDB(r io.Reader) (*ItemDB, error) {
@@ -23,7 +24,7 @@ func UnmarshalItemDB(r io.Reader) (*ItemDB, error) {
 	if err != nil {
 		return nil, err
 	}
-	if len(headers) != 2 {
+	if len(headers) < 3 {
 		return nil, errors.New("csv is invalid")
 	}
 
@@ -35,9 +36,12 @@ func UnmarshalItemDB(r io.Reader) (*ItemDB, error) {
 	itemDB := make(ItemDB)
 
 	for _, record := range records {
-		if len(record) != 2 {
+		if len(record) < 3 {
 			return nil, errors.New("csv is invalid")
 		}
+        if record[0] == "" {
+            continue
+        }
 
 		itemDB[ItemID(record[0])] = &ItemDBEntry{
 			Name:    record[1],

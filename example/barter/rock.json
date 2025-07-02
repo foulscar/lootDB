@@ -1,0 +1,17 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "chance": 0.05,
+            "entries": [
+                {
+                    "type": "item",
+                    "id": "bundleEarth",
+                    "weight": 1,
+                    "CountMin": 1,
+                    "CountMax": 1
+                }
+            ]
+        }
+    ]
+}
