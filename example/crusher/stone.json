@@ -5,21 +5,18 @@
             "chance": 1.0,
             "entries": [
                 {
-                    "type": "item",
                     "id": "rock",
                     "weight": 40,
                     "countMin": 2,
                     "countMax": 3
                 },
                 {
-                    "type": "item",
                     "id": "ironRaw",
                     "weight": 7,
                     "countMin": 0,
                     "countMax": 3
                 },
                 {
-                    "type": "item",
                     "id": "goldRaw",
                     "weight": 3,
                     "countMin": 0,

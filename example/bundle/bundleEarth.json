@@ -5,28 +5,24 @@
             "chance": 1,
             "entries": [
                 {
-                    "type": "item",
                     "id": "stone",
                     "weight": 50,
                     "CountMin": 1,
                     "CountMax": 2
                 },
                 {
-                    "type": "item",
                     "id": "granite",
                     "weight": 30,
                     "CountMin": 1,
                     "CountMax": 2
                 },
                 {
-                    "type": "item",
                     "id": "andesite",
                     "weight": 25,
                     "CountMin": 1,
                     "CountMax": 2
                 },
                 {
-                    "type": "item",
                     "id": "sandstone",
                     "weight": 5,
                     "CountMin": 1,
