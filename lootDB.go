@@ -81,7 +81,7 @@ func NewLootDBFromDir(dirPath string) (*LootDB, error) {
 				return nil, err
 			}
 
-			table := Table{}
+			table := Table{Index: string(tableCat) + "/" + string(itemID) + ".json"}
 			err = UnmarshalTable(data, &table)
 			if err != nil {
 				return nil, err
@@ -91,5 +91,61 @@ func NewLootDBFromDir(dirPath string) (*LootDB, error) {
 		}
 	}
 
+	lootDB.LinkItemDBWithTables()
+
 	return &lootDB, nil
+}
+
+func (db *LootDB) IsValid() (bool, error) {
+	if db.ItemDB == nil || db.TableDB == nil {
+		return false, errors.New("fields are nil")
+	}
+
+	undefinedErr := errors.New("undefined ItemID")
+
+	for _, tableCat := range db.TableDB {
+		for itemID, table := range tableCat {
+			if valid, err := table.IsValid(); !valid {
+				return false, err
+			}
+			if _, ok := db.ItemDB[itemID]; !ok {
+				return false, undefinedErr
+			}
+			for _, pool := range table.Pools {
+				if valid, err := pool.IsValid(); !valid {
+					return false, err
+				}
+				for _, entry := range pool.Entries {
+					if entry.Type != "item" {
+						continue
+					}
+					if _, ok := db.ItemDB[ItemID(entry.ID)]; !ok {
+						return false, undefinedErr
+					}
+				}
+			}
+		}
+	}
+
+	return true, nil
+}
+
+func (db *LootDB) LinkItemDBWithTables() {
+	for mainItemID := range db.ItemDB {
+		itemEntry := db.ItemDB[mainItemID]
+		for tableCat, entries := range db.TableDB {
+			for itemID, table := range entries {
+				if itemID == mainItemID {
+					itemEntry.UsedFor = append(itemEntry.UsedFor, tableCat)
+				}
+				for _, pool := range table.Pools {
+					for _, entry := range pool.Entries {
+						if ItemID(entry.ID) == mainItemID {
+							itemEntry.FoundIn[tableCat] = append(itemEntry.FoundIn[tableCat], itemID)
+						}
+					}
+				}
+			}
+		}
+	}
 }

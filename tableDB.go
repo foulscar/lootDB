@@ -11,7 +11,8 @@ type TableCat string
 type TableDB map[TableCat]map[ItemID]Table
 
 type Table struct {
-	Pools []Pool `json:"pools"`
+	Index string
+	Pools []*Pool `json:"pools"`
 }
 
 type Pool struct {
@@ -21,14 +22,29 @@ type Pool struct {
 }
 
 type PoolEntry struct {
-	Type   string `json:"type"`
-	ID     string `json:"id"`
-	Weight int    `json:"weight"`
+	Type       string  `json:"type"`
+	ID         string  `json:"id"`
+	Weight     int     `json:"weight"`
+	CountMin   int     `json:"countMin"`
+	CountMax   int     `json:"countMax"`
+	CalcChance float64 `json:"calcChance,omitempty"`
 }
 
 var ValidPoolEntryTypes = []string{
 	"item",
 	"loottable",
+}
+
+func (p *Pool) CalculateEntryChances() {
+	totalWeight := 0
+	for _, entry := range p.Entries {
+		totalWeight += entry.Weight
+	}
+
+	for i, entry := range p.Entries {
+		chance := float64(entry.Weight) / float64(totalWeight)
+		p.Entries[i].CalcChance = chance
+	}
 }
 
 func MarshalTable(table *Table) ([]byte, error) {
@@ -44,6 +60,10 @@ func UnmarshalTable(data []byte, table *Table) error {
 	err := json.Unmarshal(data, &table)
 	if err != nil {
 		return err
+	}
+
+	for _, pool := range table.Pools {
+		pool.CalculateEntryChances()
 	}
 
 	isValid, err := table.IsValid()

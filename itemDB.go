@@ -8,12 +8,12 @@ import (
 
 type ItemID string
 
-type ItemDB map[ItemID]ItemDBEntry
+type ItemDB map[ItemID]*ItemDBEntry
 
 type ItemDBEntry struct {
 	Name    string
-	FoundIn map[TableCat][]*Table
-	UsedFor map[TableCat][]*Table
+	FoundIn map[TableCat][]ItemID
+	UsedFor []TableCat
 }
 
 func UnmarshalItemDB(r io.Reader) (*ItemDB, error) {
@@ -39,10 +39,10 @@ func UnmarshalItemDB(r io.Reader) (*ItemDB, error) {
 			return nil, errors.New("csv is invalid")
 		}
 
-		itemDB[ItemID(record[0])] = ItemDBEntry{
+		itemDB[ItemID(record[0])] = &ItemDBEntry{
 			Name:    record[1],
-			FoundIn: make(map[TableCat][]*Table),
-			UsedFor: make(map[TableCat][]*Table),
+			FoundIn: make(map[TableCat][]ItemID),
+			UsedFor: make([]TableCat, 0),
 		}
 	}
 
