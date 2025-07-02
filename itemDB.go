@@ -39,9 +39,9 @@ func UnmarshalItemDB(r io.Reader) (*ItemDB, error) {
 		if len(record) < 3 {
 			return nil, errors.New("csv is invalid")
 		}
-        if record[0] == "" {
-            continue
-        }
+		if record[0] == "" {
+			continue
+		}
 
 		itemDB[ItemID(record[0])] = &ItemDBEntry{
 			Name:    record[1],
