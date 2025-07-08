@@ -22,11 +22,11 @@ type Pool struct {
 }
 
 type PoolEntry struct {
-	ID         string  `json:"id"`
-	Weight     int     `json:"weight"`
-	CountMin   int     `json:"countMin"`
-	CountMax   int     `json:"countMax"`
-	CalcChance float64 
+	ID         string `json:"id"`
+	Weight     int    `json:"weight"`
+	CountMin   int    `json:"countMin"`
+	CountMax   int    `json:"countMax"`
+	CalcChance float64
 }
 
 func (p *Pool) CalculateEntryChances() {
